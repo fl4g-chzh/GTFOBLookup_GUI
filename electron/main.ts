@@ -6,6 +6,8 @@ import type { AppSettings, ProxySettings, SearchQuery, SyncResponse } from '../s
 
 const createWindow = async () => {
   await databaseService.init()
+  const packagedIconPath = path.join(app.getAppPath(), 'build', 'icon.ico')
+  const devIconPath = path.join(app.getAppPath(), 'build', 'icon.ico')
 
   const window = new BrowserWindow({
     width: 1440,
@@ -13,6 +15,7 @@ const createWindow = async () => {
     minWidth: 1100,
     minHeight: 720,
     autoHideMenuBar: true,
+    icon: process.env.VITE_DEV_SERVER_URL ? devIconPath : packagedIconPath,
     webPreferences: {
       preload: path.join(import.meta.dirname, 'preload.mjs'),
       contextIsolation: true,

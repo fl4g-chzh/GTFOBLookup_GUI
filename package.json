@@ -1,7 +1,7 @@
 {
   "name": "gtfoblookup-gui",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Offline Electron GUI for GTFOBins, LOLBAS, WADComs and HijackLibs lookup.",
   "author": "fl4g-chzh <505647296@qq.com>",
   "repository": {

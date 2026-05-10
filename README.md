@@ -1,73 +1,103 @@
-# React + TypeScript + Vite
+# GTFOBLookup GUI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+离线版 GTFOBins / LOLBAS / WADComs / HijackLibs 检索工具，基于 Electron + React + TypeScript。
 
-Currently, two official plugins are available:
+## 功能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 本地离线搜索四个提权/绕过相关数据源
+- 按数据源筛选并查看详情、示例、链接
+- 本地 SQLite 数据库存储
+- 支持同步代理设置
+- 支持 Windows 安装包打包
 
-## React Compiler
+## 技术栈
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Electron
+- React 19
+- TypeScript
+- Vite
+- sql.js
 
-## Expanding the ESLint configuration
+## 本地开发
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+安装依赖：
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+启动开发环境：
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+类型检查：
+
+```bash
+npm run typecheck
+```
+
+Lint：
+
+```bash
+npm run lint
+```
+
+## 数据同步
+
+命令行同步四个数据源：
+
+```bash
+npm run sync
+```
+
+## 构建与打包
+
+构建前端和 Electron 产物：
+
+```bash
+npm run build
+```
+
+打 Windows 安装包：
+
+```bash
+npm run pack:win
+```
+
+一条命令完成构建和打包：
+
+```bash
+npm run dist:win
+```
+
+产物目录：
+
+- 前端构建：`app-dist`
+- Electron 构建：`dist-electron`
+- 安装包输出：`release`
+
+## GitHub Actions
+
+仓库已配置 Windows 自动构建与发布工作流：
+
+- 推送到 `main` 时自动构建并上传 Artifact
+- 手动触发时也可直接构建
+- 推送 `v*` 标签时自动创建 GitHub Release 并上传安装包
+
+发布新版本示例：
+
+```bash
+git add .
+git commit -m "release: v0.1.0"
+git push
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+## 注意事项
+
+- 打包前请先关闭旧的 `GTFOBLookup` 运行实例，避免 `win-unpacked` 被锁定
+- 当前未配置自定义 `.ico` 图标，安装包会使用默认 Electron 图标
+- 首次同步依赖网络，建议在设置中配置代理

@@ -2,6 +2,12 @@
   "name": "gtfoblookup-gui",
   "private": true,
   "version": "0.0.0",
+  "description": "Offline Electron GUI for GTFOBins, LOLBAS, WADComs and HijackLibs lookup.",
+  "author": "fl4g-chzh <505647296@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fl4g-chzh/GTFOBLookup_GUI.git"
+  },
   "type": "module",
   "main": "dist-electron/main.js",
   "scripts": {
@@ -48,8 +54,27 @@
     "wait-on": "^9.0.5"
   },
   "build": {
+    "appId": "com.fl4gchzh.gtfoblookup",
+    "productName": "GTFOBLookup",
     "directories": {
       "output": "release"
+    },
+    "files": [
+      "app-dist/**/*",
+      "dist-electron/**/*",
+      "database/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "artifactName": "${productName}-Setup-${version}.${ext}",
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
     }
   }
 }
